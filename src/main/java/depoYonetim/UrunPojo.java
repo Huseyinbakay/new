@@ -7,7 +7,7 @@ public class UrunPojo {
         }
 
 
-        private int urunId=1;
+        private int urunId;
         public static int count=99;
 
         private String urunIsmi;
@@ -16,21 +16,30 @@ public class UrunPojo {
 
         private String birim;
 
-        private String raf="boş";
+        private String raf;
 
 
 
-    public UrunPojo() {
-    }
+
 
     public UrunPojo(String urunIsmi, String uretici, String birim) {
 
-             this.urunId=count++;
+            this.urunId=idAtama();
             this.urunIsmi = urunIsmi;
             this.uretici = uretici;
             this.birim = birim;
 
     }
+
+    public  int idAtama(){
+       urunId=count;
+       count++;
+
+       return urunId;
+
+
+    }
+
 
 
     public int getUrunId() {

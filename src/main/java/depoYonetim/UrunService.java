@@ -2,16 +2,35 @@ package depoYonetim;
 
 import java.util.*;
 
-public class UrunService {
+public class UrunService extends DepoRaff{
+
+
+
     public static void main(String[] args) {
 
-UrunService yeni=new UrunService();
-
-
-
     }
+
+
+
     public static HashMap<Integer, UrunPojo> liste = new HashMap<>();
-    UrunPojo urun1=new UrunPojo();
+
+     static DepoRaff deporr=new DepoRaff();
+
+    private static Scanner scan=new Scanner(System.in);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -26,12 +45,8 @@ UrunService yeni=new UrunService();
 
 
 
-   public UrunService() {
-
-      urunTanimlama();
 
 
-   }
 
     static void urunCikisi() {
         Scanner input=new Scanner(System.in);
@@ -57,105 +72,36 @@ UrunService yeni=new UrunService();
 
     }
 
-    static void urunuRafaKoy() {
+    public static void urunuRafaKoy(){
+
+        System.out.println("Lütfen rafa yerleştirmek istediğiniz ürün id giriniz");
+
+        int id=scan.nextInt();
 
 
+        if (liste.get(id).getRaf()==null){
 
+            for (int i = 0; i <newRaf.size(); i++) {
+                liste.get(id).setRaf(newRaf.get(i));
+                newRaf.remove(newRaf.get(newRaf.size()-1));
 
-        Scanner input = new Scanner(System.in);
-        System.out.println("Lütfen ürün ID giriniz");
-        int id=input.nextInt();
-        liste.get(99).setRaf("A");
-
-
-
-
-
-        int rafSayi=1;
-        List<Character> raf=new ArrayList<>();
-
-
-
-
-
-
-
-        }
-
-
-
-/*
-        raf.add("A");
-        raf.add("B");
-        raf.add("C");
-        raf.add("D");
-        raf.add("E");
-        raf.add("F");
-        int rafSayi=1;
-        liste.get(99).setRaf("A");
-        boolean rafVarmi=liste.get(id).getRaf()==null;
-        boolean miktar=liste.get(id).getMiktar()>50;
-
-
-        if (!rafVarmi){
-
-            for (String w:raf) {
-
-
-
-                if (liste.get(id).getRaf().equals(w)){
-
-                    if (miktar){
-                        liste.get(id).setMiktar(liste.get(id).getMiktar()-50);
-                        liste.get(id).setRaf(liste.get(id).getRaf()+w+rafSayi++);
-
-                    }else
-                        liste.get(id).setRaf(liste.get(id).getRaf());
-                }else {
-
-                    liste.get(id).setRaf(w);
                 }
 
-            }
-            rafSayi++;
 
         }else {
+            String b=liste.get(id).getRaf().split("")[1];
+            int bc=Integer.valueOf(b);
+            String aa=liste.get(id).getRaf().split("")[0];
 
-            System.out.println();
-
-            }
-        */
-
-
-
-
-
-
-
-
-        /*int raf1=1;
-        int i =0;
-        String a="";
-        String b=raf.toString();
-
-        if (liste.containsKey(id)){
-
-            if (liste.get(id).getRaf()==null){
-
-
-                liste.get(id).setRaf(b.charAt(i)+raf1+a);
-                i++;
-
-            }else {
-                liste.get(id).setRaf(String.valueOf(liste.get(id).getRaf().indexOf(0)+raf1++));
-            }
-
-
-        }else {
-            System.out.println();
+            liste.get(id).setRaf(liste.get(id).getRaf()+","+aa+(bc+1));
 
         }
-        */
+
+
+
+        System.out.println(newRaf);
+    }
+
 
 
     static void urunGirisi() {
@@ -191,10 +137,13 @@ UrunService yeni=new UrunService();
             String isim = input.next();
             System.out.println("Lütfen üretici firmayı giriniz");
             String uretici = input.next();
+
+
             System.out.println("Lütfen birim giriniz");
             String birim = input.next();
 
             UrunPojo urunler=new UrunPojo(isim,uretici,birim);
+
 
             liste.put(urunler.getUrunId(),urunler);
 
@@ -212,6 +161,9 @@ UrunService yeni=new UrunService();
         System.out.println("UrunID  "+"       Urunİsmi"+"       Miktar"+"      Birim"+"          Raf"+"        Uretici");
 
 
-        liste1.stream().forEach(t-> System.out.println("   "+t.getKey()+"              "+t.getValue().getUrunIsmi()+"        "+t.getValue().getMiktar()+"             "+t.getValue().getBirim()+"          "+t.getValue().getRaf()+"       "+t.getValue().getUretici()) );
+        liste1.stream().forEach(t-> System.out.println("   "+t.getKey()+"              "+t.getValue().getUrunIsmi()+"        "+t.getValue().getMiktar()+"             "+t.getValue().getBirim()+"          "+t.getValue().getRaf()+"       "+t.getValue().getUretici()));
+
     }
+
+
 }

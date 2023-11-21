@@ -2,6 +2,10 @@ package depoYonetim;
 
 public class DepoTask {
 
+    public static void main(String[] args) {
+
+    }
+
 
     /*
      * basit bir depo projesi
@@ -51,6 +55,5 @@ public class DepoTask {
 
 
 
+    }
 
-
-}
